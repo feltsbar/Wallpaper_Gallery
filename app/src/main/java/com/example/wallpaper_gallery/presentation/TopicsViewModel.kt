@@ -11,10 +11,11 @@ class TopicsViewModel(application: Application) : AndroidViewModel(application) 
 
     fun loadTopics() {
         viewModelScope.launch {
-            val response = ApiFactory.apiService.getTopicsPhotos("BJJMtteDJA4")
-            Log.d("TEST_OF_LOADING_DATA", response.toString())
-
+            val topicsList = ApiFactory.apiService.getTopicsList(25)
+            Log.d("TEST_OF_LOADING_DATA", topicsList.toString())
         }
 
     }
+
+
 }
