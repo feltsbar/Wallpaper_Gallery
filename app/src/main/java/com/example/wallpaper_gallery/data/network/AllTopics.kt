@@ -14,5 +14,9 @@ data class AllTopics(
 
     @SerializedName("total_photos")
     @Expose
-    val totalPhotos : Int
+    val totalPhotos : Int,
+
+    @SerializedName("links")
+    @Expose
+    val link : Int
 )
