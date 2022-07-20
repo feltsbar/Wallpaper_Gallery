@@ -11,7 +11,7 @@ interface ApiService {
 
     @Headers("Authorization: Client-ID ${BuildConfig.API_KEY}")
     @GET("/topics")
-    suspend fun getAllTopicsList(
+    suspend fun getTopicsList(
         @Query(QUERY_PARAM_ITEMS_PER_PAGE) itemsPerPage : Int = 10
     ): List<TopicItem>
 

@@ -1,13 +1,11 @@
 package com.example.wallpaper_gallery.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.wallpaper_gallery.R
 import com.example.wallpaper_gallery.data.network.ApiFactory
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
 
-            val response = ApiFactory.apiService.getAllTopicsList(1)
+            val response = ApiFactory.apiService.getTopicsPhotos("BJJMtteDJA4")
             Log.d("TEST_OF_LOADING_DATA", response.toString())
 
         }

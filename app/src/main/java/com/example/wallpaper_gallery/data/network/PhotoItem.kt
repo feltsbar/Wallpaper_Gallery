@@ -10,5 +10,5 @@ data class PhotoItem(
 
     @SerializedName("urls")
     @Expose
-    val photoUrlsList : List<PhotoUrls>? = null
+    val photoUrls : PhotoUrls
 )
