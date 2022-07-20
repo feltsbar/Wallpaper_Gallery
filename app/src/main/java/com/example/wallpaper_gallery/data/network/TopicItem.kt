@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class TopicItem(
     @SerializedName("id")
     @Expose
-    val topicId : Int,
+    val topicId : String,
 
     @SerializedName("title")
     @Expose

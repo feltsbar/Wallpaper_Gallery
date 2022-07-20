@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class PhotoItem(
     @SerializedName("id")
     @Expose
-    val photoId : Int,
+    val photoId : String,
 
     @SerializedName("urls")
     @Expose
