@@ -3,7 +3,7 @@ package com.example.wallpaper_gallery.data.network
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class UrlsOfPhoto(
+data class PhotoUrls(
     @SerializedName("raw")
     @Expose
     val raw : String? = null,

@@ -3,12 +3,16 @@ package com.example.wallpaper_gallery.data.network
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class TopicsPhotos(
+data class TopicItem(
     @SerializedName("id")
     @Expose
-    val photoId : Int,
+    val topicId : Int,
 
-    @SerializedName("urls")
+    @SerializedName("title")
     @Expose
-    val urlsPhoto : List<UrlsOfPhoto>? = null
+    val title : String,
+
+    @SerializedName("total_photos")
+    @Expose
+    val totalPhotos : Int,
 )
