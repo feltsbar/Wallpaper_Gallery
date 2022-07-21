@@ -17,15 +17,6 @@ class TopicsViewModel(application: Application) : AndroidViewModel(application) 
     private val getTopicList = GetTopicListUseCase(repository)
     private val getPhotoList = GetPhotoListUseCase(repository)
 
-    var topicList = mutableListOf<TopicInfo>()
-//    val tiptoe = listOf(TopicInfo("gheriuhg", "ttt", 12))
-
-    init {
-        viewModelScope.launch {
-            topicList = loadTopics() as MutableList<TopicInfo>
-        }
-    }
-
     suspend fun loadTopics() : List<TopicInfo> {
         Log.d("TEST_OF_LOADING_DATA", getTopicList.invoke().toString())
         return getTopicList.invoke()

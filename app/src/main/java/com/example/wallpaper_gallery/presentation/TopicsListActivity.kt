@@ -1,6 +1,7 @@
 package com.example.wallpaper_gallery.presentation
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.wallpaper_gallery.R
@@ -27,6 +28,12 @@ class TopicsListActivity : AppCompatActivity() {
             runOnUiThread {
                 adapter.submitList(list)
             }
+        }
+        adapter.onTopicClickListener = object : TopicsAdapter.OnTopicClickListener {
+            override fun onTopicClick(topicId: String) {
+                Log.d("Click_Info", topicId)
+            }
+
         }
 
     }

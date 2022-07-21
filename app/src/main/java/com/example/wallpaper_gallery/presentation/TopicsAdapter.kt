@@ -11,11 +11,16 @@ import kotlinx.android.synthetic.main.item_topic.view.*
 
 class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(TopicDiffCallback) {
 
+    var onTopicClickListener : OnTopicClickListener? = null
+
     override fun onBindViewHolder(holder: TopicViewHolder, position: Int) {
         val topic = getItem(position)
         with(holder) {
             tvTopicsTitle.text = topic.title
             tvTopicsPhotoCount.text = topic.totalPhotos.toString()
+            itemView.setOnClickListener {
+                onTopicClickListener?.onTopicClick(topic.topicId)
+            }
         }
     }
 
@@ -28,6 +33,10 @@ class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(Topi
     inner class TopicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTopicsTitle = itemView.tv_topics_title
         val tvTopicsPhotoCount = itemView.tv_topics_photo_count
+    }
+
+    interface OnTopicClickListener {
+        fun onTopicClick(topicId: String)
     }
 
 }
