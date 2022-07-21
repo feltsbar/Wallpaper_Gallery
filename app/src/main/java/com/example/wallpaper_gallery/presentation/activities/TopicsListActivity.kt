@@ -1,6 +1,7 @@
 package com.example.wallpaper_gallery.presentation.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.wallpaper_gallery.R
@@ -30,9 +31,17 @@ class TopicsListActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         scope.launch {
             val list = viewModel.loadTopics()
-            runOnUiThread {
-                adapter.submitList(list)
+            if (list.isEmpty()) {
+                tv_no_internet.visibility = View.VISIBLE
+                iv_no_internet.visibility = View.VISIBLE
+            } else {
+                tv_no_internet.visibility = View.GONE
+                iv_no_internet.visibility = View.GONE
+                runOnUiThread {
+                    adapter.submitList(list)
+                }
             }
+
         }
         adapter.onTopicClickListener = object : TopicsAdapter.OnTopicClickListener {
             override fun onTopicClick(topicInfo: TopicInfo) {

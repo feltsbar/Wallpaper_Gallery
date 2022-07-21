@@ -4,14 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wallpaper_gallery.R
 import com.example.wallpaper_gallery.domain.TopicInfo
-import com.example.wallpaper_gallery.presentation.view_models.MainViewModel
 import com.example.wallpaper_gallery.presentation.adapters.PhotosAdapter
+import com.example.wallpaper_gallery.presentation.view_models.MainViewModel
 import kotlinx.android.synthetic.main.activity_photos_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +31,6 @@ class PhotosListActivity : AppCompatActivity() {
         title = intent.getStringExtra(TOPIC_TITLE)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setupRecyclerView()
-
     }
 
     private fun setupRecyclerView() {
@@ -47,8 +47,15 @@ class PhotosListActivity : AppCompatActivity() {
         val topic = intent.getStringExtra(TOPIC_ID) ?: ""
         scope.launch {
             val list = viewModel.loadPhotosByTopic(topic)
-            runOnUiThread {
-                adapter.submitList(list)
+            if (list.isEmpty()) {
+                tv_no_internet.visibility = View.VISIBLE
+                iv_no_internet.visibility = View.VISIBLE
+            } else {
+                tv_no_internet.visibility = View.GONE
+                iv_no_internet.visibility = View.GONE
+                runOnUiThread {
+                    adapter.submitList(list)
+                }
             }
         }
         adapter.onPhotoClickListener = object : PhotosAdapter.OnPhotoClickListener {

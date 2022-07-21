@@ -33,6 +33,6 @@ class TopicRepositoryImpl : TopicRepository {
     }
 
     companion object {
-        private const val PARAMS_ITEMS_PER_PAGE = 25
+        private const val PARAMS_ITEMS_PER_PAGE = 2500
     }
 }
