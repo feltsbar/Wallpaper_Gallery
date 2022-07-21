@@ -14,10 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wallpaper_Gallery">
         <activity
-            android:name=".presentation.PhotosListActivity"
+            android:name=".presentation.WallpaperPhotoActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.TopicsListActivity"
+            android:name=".presentation.activities.PhotosListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.activities.TopicsListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

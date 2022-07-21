@@ -1,4 +1,4 @@
-package com.example.wallpaper_gallery.presentation
+package com.example.wallpaper_gallery.presentation.callbacks
 
 import androidx.recyclerview.widget.DiffUtil
 import com.example.wallpaper_gallery.domain.TopicInfo

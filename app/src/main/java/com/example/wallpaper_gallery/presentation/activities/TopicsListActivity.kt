@@ -1,10 +1,11 @@
-package com.example.wallpaper_gallery.presentation
+package com.example.wallpaper_gallery.presentation.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.wallpaper_gallery.R
+import com.example.wallpaper_gallery.domain.TopicInfo
+import com.example.wallpaper_gallery.presentation.view_models.MainViewModel
 import com.example.wallpaper_gallery.presentation.adapters.TopicsAdapter
 import kotlinx.android.synthetic.main.activity_topics_list.*
 import kotlinx.coroutines.CoroutineScope
@@ -13,7 +14,7 @@ import kotlinx.coroutines.launch
 
 class TopicsListActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: TopicsViewModel
+    private lateinit var viewModel: MainViewModel
     private val scope = CoroutineScope(Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,7 +23,7 @@ class TopicsListActivity : AppCompatActivity() {
 
         val adapter = TopicsAdapter()
         rv_topics_list.adapter = adapter
-        viewModel = ViewModelProvider(this)[TopicsViewModel::class.java]
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         scope.launch {
             val list = viewModel.loadTopics()
             runOnUiThread {
@@ -30,12 +31,12 @@ class TopicsListActivity : AppCompatActivity() {
             }
         }
         adapter.onTopicClickListener = object : TopicsAdapter.OnTopicClickListener {
-            override fun onTopicClick(topicId: String) {
-                val intent = PhotosListActivity.newIntent(this@TopicsListActivity, topicId)
+            override fun onTopicClick(topicInfo: TopicInfo) {
+                val intent = PhotosListActivity.newIntent(this@TopicsListActivity, topicInfo)
                 startActivity(intent)
             }
-
         }
+
 
     }
 }

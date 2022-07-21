@@ -1,4 +1,4 @@
-package com.example.wallpaper_gallery.presentation
+package com.example.wallpaper_gallery.presentation.view_models
 
 import android.app.Application
 import android.util.Log
@@ -12,7 +12,7 @@ import com.example.wallpaper_gallery.domain.TopicInfo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class TopicsViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = TopicRepositoryImpl()
     private val getTopicList = GetTopicListUseCase(repository)

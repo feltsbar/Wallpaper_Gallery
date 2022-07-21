@@ -20,7 +20,7 @@ interface ApiService {
     @GET("/topics/{id_or_slug}/photos")
     suspend fun getTopicsPhotos(
         @Path("id_or_slug") idOrSlugOfTopic: String,
-        @Query(QUERY_PARAM_ITEMS_PER_PAGE) itemsPerPage: Int = 10,
+        @Query(QUERY_PARAM_ITEMS_PER_PAGE) itemsPerPage: Int = 30,
         @Query(QUERY_PARAM_PHOTO_ORIENTATION) photoOrientation: String = PHOTO_ORIENTATION_PORTRAIT
     ): List<PhotoItemDto>
 

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaper_gallery.R
 import com.example.wallpaper_gallery.domain.TopicInfo
-import com.example.wallpaper_gallery.presentation.TopicDiffCallback
+import com.example.wallpaper_gallery.presentation.callbacks.TopicDiffCallback
 import kotlinx.android.synthetic.main.item_topic.view.*
 
 class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(TopicDiffCallback) {
@@ -20,7 +20,7 @@ class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(Topi
             tvTopicsTitle.text = topic.title
             tvTopicsPhotoCount.text = topic.totalPhotos.toString()
             itemView.setOnClickListener {
-                onTopicClickListener?.onTopicClick(topic.topicId)
+                onTopicClickListener?.onTopicClick(topic)
             }
         }
     }
@@ -37,7 +37,7 @@ class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(Topi
     }
 
     interface OnTopicClickListener {
-        fun onTopicClick(topicId: String)
+        fun onTopicClick(topicInfo : TopicInfo)
     }
 
 }

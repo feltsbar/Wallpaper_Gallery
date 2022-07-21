@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaper_gallery.R
 import com.example.wallpaper_gallery.domain.PhotoInfo
-import com.example.wallpaper_gallery.presentation.PhotoDiffCallback
+import com.example.wallpaper_gallery.presentation.callbacks.PhotoDiffCallback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_photo.view.*
 
