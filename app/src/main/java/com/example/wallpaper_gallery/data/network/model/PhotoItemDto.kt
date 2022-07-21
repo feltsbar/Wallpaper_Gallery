@@ -1,14 +1,14 @@
-package com.example.wallpaper_gallery.data.network
+package com.example.wallpaper_gallery.data.network.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class PhotoItem(
+data class PhotoItemDto(
     @SerializedName("id")
     @Expose
     val photoId: String,
 
     @SerializedName("urls")
     @Expose
-    val photoUrls: PhotoUrls
+    val photoUrlsDto: PhotoUrlsDto
 )

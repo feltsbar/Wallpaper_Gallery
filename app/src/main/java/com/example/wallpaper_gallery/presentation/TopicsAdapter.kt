@@ -5,12 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaper_gallery.R
-import com.example.wallpaper_gallery.data.network.TopicItem
+import com.example.wallpaper_gallery.data.network.model.TopicItemDto
 import kotlinx.android.synthetic.main.item_topic.view.*
 
 class TopicsAdapter : RecyclerView.Adapter<TopicsAdapter.TopicViewHolder>() {
 
-    var topicList = arrayListOf<TopicItem>()
+    var topicList = arrayListOf<TopicItemDto>()
         set(value) {
             field = value
             notifyDataSetChanged()

@@ -1,9 +1,9 @@
-package com.example.wallpaper_gallery.data.network
+package com.example.wallpaper_gallery.data.network.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class PhotoUrls(
+data class PhotoUrlsDto(
     @SerializedName("raw")
     @Expose
     val raw: String? = null,
