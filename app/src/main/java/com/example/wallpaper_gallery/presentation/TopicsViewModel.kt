@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.wallpaper_gallery.data.repository.TopicRepositoryImpl
 import com.example.wallpaper_gallery.domain.GetPhotoListUseCase
 import com.example.wallpaper_gallery.domain.GetTopicListUseCase
+import com.example.wallpaper_gallery.domain.TopicInfo
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class TopicsViewModel(application: Application) : AndroidViewModel(application) {
@@ -15,15 +17,18 @@ class TopicsViewModel(application: Application) : AndroidViewModel(application) 
     private val getTopicList = GetTopicListUseCase(repository)
     private val getPhotoList = GetPhotoListUseCase(repository)
 
+    var topicList = mutableListOf<TopicInfo>()
+//    val tiptoe = listOf(TopicInfo("gheriuhg", "ttt", 12))
+
     init {
-        loadTopics()
-//        loadPhotosByTopic("BJJMtteDJA4")
+        viewModelScope.launch {
+            topicList = loadTopics() as MutableList<TopicInfo>
+        }
     }
 
-    private fun loadTopics() {
-        viewModelScope.launch {
-            Log.d("TEST_OF_LOADING_DATA", getTopicList.invoke().toString())
-        }
+    suspend fun loadTopics() : List<TopicInfo> {
+        Log.d("TEST_OF_LOADING_DATA", getTopicList.invoke().toString())
+        return getTopicList.invoke()
     }
 
     private fun loadPhotosByTopic(topicId: String) {
