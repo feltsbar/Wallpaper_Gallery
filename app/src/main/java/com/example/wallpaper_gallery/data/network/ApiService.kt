@@ -1,6 +1,7 @@
 package com.example.wallpaper_gallery.data.network
 
 import com.example.wallpaper_gallery.BuildConfig
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
@@ -25,9 +26,6 @@ interface ApiService {
     companion object {
         private const val QUERY_PARAM_ITEMS_PER_PAGE = "per_page"
         private const val QUERY_PARAM_PHOTO_ORIENTATION = "orientation"
-
-        private const val PHOTO_ORIENTATION_LANDSCAPE = "landscape"
         private const val PHOTO_ORIENTATION_PORTRAIT = "portrait"
-        private const val PHOTO_ORIENTATION_SQUARISH = "squarish"
     }
 }
