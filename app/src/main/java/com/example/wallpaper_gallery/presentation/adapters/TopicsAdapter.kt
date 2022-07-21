@@ -1,4 +1,4 @@
-package com.example.wallpaper_gallery.presentation
+package com.example.wallpaper_gallery.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaper_gallery.R
 import com.example.wallpaper_gallery.domain.TopicInfo
+import com.example.wallpaper_gallery.presentation.TopicDiffCallback
 import kotlinx.android.synthetic.main.item_topic.view.*
 
 class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(TopicDiffCallback) {

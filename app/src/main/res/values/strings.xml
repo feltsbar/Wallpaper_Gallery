@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Wallpaper_Gallery</string>
+    <string name="some_photo_by_topic">Some photo by topic</string>
 </resources>

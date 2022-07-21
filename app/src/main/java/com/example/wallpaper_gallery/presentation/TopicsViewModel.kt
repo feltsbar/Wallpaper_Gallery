@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.wallpaper_gallery.data.repository.TopicRepositoryImpl
 import com.example.wallpaper_gallery.domain.GetPhotoListUseCase
 import com.example.wallpaper_gallery.domain.GetTopicListUseCase
+import com.example.wallpaper_gallery.domain.PhotoInfo
 import com.example.wallpaper_gallery.domain.TopicInfo
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -22,10 +23,9 @@ class TopicsViewModel(application: Application) : AndroidViewModel(application) 
         return getTopicList.invoke()
     }
 
-    private fun loadPhotosByTopic(topicId: String) {
-        viewModelScope.launch {
-            Log.d("TEST_OF_LOADING_DATA", getPhotoList.invoke(topicId).toString())
-        }
+    suspend fun loadPhotosByTopic(topicId: String) : List<PhotoInfo> {
+        Log.d("TEST_OF_LOADING_DATA", getPhotoList.invoke(topicId).toString())
+        return getPhotoList.invoke(topicId)
     }
 
 }

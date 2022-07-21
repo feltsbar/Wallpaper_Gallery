@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.wallpaper_gallery.R
-import com.example.wallpaper_gallery.domain.TopicInfo
+import com.example.wallpaper_gallery.presentation.adapters.TopicsAdapter
 import kotlinx.android.synthetic.main.activity_topics_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,7 +31,8 @@ class TopicsListActivity : AppCompatActivity() {
         }
         adapter.onTopicClickListener = object : TopicsAdapter.OnTopicClickListener {
             override fun onTopicClick(topicId: String) {
-                Log.d("Click_Info", topicId)
+                val intent = PhotosListActivity.newIntent(this@TopicsListActivity, topicId)
+                startActivity(intent)
             }
 
         }
