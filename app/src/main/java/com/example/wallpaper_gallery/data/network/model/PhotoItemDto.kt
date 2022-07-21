@@ -10,5 +10,5 @@ data class PhotoItemDto(
 
     @SerializedName("urls")
     @Expose
-    val photoUrlsDto: PhotoUrlsDto
+    val photoUrls: PhotoUrlsDto
 )
