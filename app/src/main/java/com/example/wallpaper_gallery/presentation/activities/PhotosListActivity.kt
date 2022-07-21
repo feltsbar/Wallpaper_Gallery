@@ -3,7 +3,7 @@ package com.example.wallpaper_gallery.presentation.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -28,6 +28,12 @@ class PhotosListActivity : AppCompatActivity() {
         setContentView(R.layout.activity_photos_list)
 
         title = intent.getStringExtra(TOPIC_TITLE)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setupRecyclerView()
+
+    }
+
+    private fun setupRecyclerView() {
         val adapter = PhotosAdapter()
         rv_photos_list.adapter = adapter
         gridLayoutManager = GridLayoutManager(
@@ -47,12 +53,18 @@ class PhotosListActivity : AppCompatActivity() {
         }
         adapter.onPhotoClickListener = object : PhotosAdapter.OnPhotoClickListener {
             override fun onPhotoClick(imageUrl: String) {
-                Log.d("ON_PHOTO_CLICK", imageUrl)
+                val intent = WallpaperPhotoActivity.newIntent(this@PhotosListActivity, imageUrl)
+                startActivity(intent)
             }
-
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return true
+    }
 
     companion object {
         private const val TOPIC_ID = "TOPIC_ID"

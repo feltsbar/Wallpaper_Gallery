@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Wallpaper_Gallery</string>
     <string name="some_photo_by_topic">Some photo by topic</string>
+    <string name="button_set_as_wallpaper">Set as wallpaper</string>
 </resources>

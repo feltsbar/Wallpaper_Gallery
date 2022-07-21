@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.wallpaper_gallery.R
 import com.example.wallpaper_gallery.domain.TopicInfo
-import com.example.wallpaper_gallery.presentation.view_models.MainViewModel
 import com.example.wallpaper_gallery.presentation.adapters.TopicsAdapter
+import com.example.wallpaper_gallery.presentation.view_models.MainViewModel
 import kotlinx.android.synthetic.main.activity_topics_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +21,10 @@ class TopicsListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_topics_list)
 
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
         val adapter = TopicsAdapter()
         rv_topics_list.adapter = adapter
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
@@ -36,7 +40,6 @@ class TopicsListActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
-
     }
+
 }
