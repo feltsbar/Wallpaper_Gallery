@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.activities.TopicsListActivity">
+    tools:context=".presentation.activities.PhotosListActivity">
 
     <ImageView
         android:id="@+id/iv_no_internet"
@@ -30,15 +30,15 @@
         android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_topics_list"
+        android:id="@+id/rv_photos_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_topic"/>
-
-
-
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/item_photo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,28 +1,28 @@
-package com.example.wallpaper_gallery.presentation
+package com.example.wallpaper_gallery.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wallpaper_gallery.R
-import com.example.wallpaper_gallery.data.network.TopicItem
+import com.example.wallpaper_gallery.domain.TopicInfo
+import com.example.wallpaper_gallery.presentation.callbacks.TopicDiffCallback
 import kotlinx.android.synthetic.main.item_topic.view.*
 
-class TopicsAdapter : RecyclerView.Adapter<TopicsAdapter.TopicViewHolder>() {
+class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(TopicDiffCallback) {
 
-    var topicList = arrayListOf<TopicItem>()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    var onTopicClickListener : OnTopicClickListener? = null
 
     override fun onBindViewHolder(holder: TopicViewHolder, position: Int) {
-        val topic = topicList[position]
+        val topic = getItem(position)
         with(holder) {
             tvTopicsTitle.text = topic.title
             tvTopicsPhotoCount.text = topic.totalPhotos.toString()
+            itemView.setOnClickListener {
+                onTopicClickListener?.onTopicClick(topic)
+            }
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopicViewHolder {
@@ -30,10 +30,14 @@ class TopicsAdapter : RecyclerView.Adapter<TopicsAdapter.TopicViewHolder>() {
         return TopicViewHolder(view)
     }
 
-    override fun getItemCount() = topicList.size
 
     inner class TopicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTopicsTitle = itemView.tv_topics_title
         val tvTopicsPhotoCount = itemView.tv_topics_photo_count
     }
+
+    interface OnTopicClickListener {
+        fun onTopicClick(topicInfo : TopicInfo)
+    }
+
 }
