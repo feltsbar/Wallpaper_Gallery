@@ -5,15 +5,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.wallpaper_gallery.R
 
-class MainActivity : AppCompatActivity() {
+class TopicsListActivity : AppCompatActivity() {
 
     private lateinit var viewModel: TopicsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_topics_list)
 
         viewModel = ViewModelProvider(this)[TopicsViewModel::class.java]
-        viewModel.loadTopics()
+
     }
 }
