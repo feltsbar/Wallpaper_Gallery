@@ -9,7 +9,6 @@ import kotlinx.coroutines.launch
 
 class TopicsViewModel(application: Application) : AndroidViewModel(application) {
 
-
     init {
         loadTopics()
     }
