@@ -23,5 +23,5 @@ in full screen of the smartphone and there is an opportunity to set the picture 
 </h4>
 
 
-https://user-images.githubusercontent.com/88978094/180330653-0f02fd96-75c5-42d8-b577-5c7df88be257.mp4
+https://user-images.githubusercontent.com/88978094/180414042-fae28038-cd50-4e93-952b-e4961ef41dd9.mp4
 
