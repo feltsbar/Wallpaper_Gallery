@@ -9,11 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wallpaper_gallery.R
+import com.example.wallpaper_gallery.databinding.ActivityPhotosListBinding
 import com.example.wallpaper_gallery.domain.TopicInfo
 import com.example.wallpaper_gallery.presentation.adapters.PhotosAdapter
 import com.example.wallpaper_gallery.presentation.view_models.MainViewModel
-import kotlinx.android.synthetic.main.activity_photos_list.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,10 +22,13 @@ class PhotosListActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var gridLayoutManager: GridLayoutManager
     private val scope = CoroutineScope(Dispatchers.IO)
+    private val binding by lazy {
+        ActivityPhotosListBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_photos_list)
+        setContentView(binding.root)
 
         title = intent.getStringExtra(TOPIC_TITLE)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -35,24 +37,28 @@ class PhotosListActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         val adapter = PhotosAdapter()
-        rv_photos_list.adapter = adapter
+        binding.rvPhotosList.adapter = adapter
         gridLayoutManager = GridLayoutManager(
             applicationContext,
             2,
             LinearLayoutManager.VERTICAL,
             false
         )
-        rv_photos_list.layoutManager = gridLayoutManager
+        binding.rvPhotosList.layoutManager = gridLayoutManager
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         val topic = intent.getStringExtra(TOPIC_ID) ?: ""
         scope.launch {
             val list = viewModel.loadPhotosByTopic(topic)
             if (list.isEmpty()) {
-                tv_no_internet.visibility = View.VISIBLE
-                iv_no_internet.visibility = View.VISIBLE
+                with(binding) {
+                    tvNoInternet.visibility = View.VISIBLE
+                    ivNoInternet.visibility = View.VISIBLE
+                }
             } else {
-                tv_no_internet.visibility = View.GONE
-                iv_no_internet.visibility = View.GONE
+                with(binding) {
+                    tvNoInternet.visibility = View.GONE
+                    ivNoInternet.visibility = View.GONE
+                }
                 runOnUiThread {
                     adapter.submitList(list)
                 }
