@@ -18,7 +18,7 @@ class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(Topi
         val topic = getItem(position)
         with(holder) {
             tvTopicsTitle.text = topic.title
-            tvTopicsPhotoCount.text = topic.totalPhotos.toString()
+//            tvTopicsPhotoCount.text = topic.totalPhotos.toString()
             itemView.setOnClickListener {
                 onTopicClickListener?.onTopicClick(topic)
             }
@@ -33,7 +33,7 @@ class TopicsAdapter : ListAdapter<TopicInfo, TopicsAdapter.TopicViewHolder>(Topi
 
     inner class TopicViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTopicsTitle = itemView.tv_topics_title
-        val tvTopicsPhotoCount = itemView.tv_topics_photo_count
+//        val tvTopicsPhotoCount = itemView.tv_topics_photo_count
     }
 
     interface OnTopicClickListener {

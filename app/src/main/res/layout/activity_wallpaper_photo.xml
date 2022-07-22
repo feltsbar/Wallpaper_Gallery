@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.activities.WallpaperPhotoActivity">
+    tools:context=".presentation.activities.WallpaperPhotoActivity"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/iv_no_internet"
@@ -46,6 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_set_as_wallpaper"
+        android:backgroundTint="@color/purple_500"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:layout_marginHorizontal="8dp"
         android:layout_marginBottom="8dp"
